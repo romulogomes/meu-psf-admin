@@ -78,6 +78,10 @@ inicio_mod.config(function ($routeProvider) {
 			templateUrl: 'calendario.html',
 			controller: 'CalendarioCtrl',
 		})
+		.when('/usuarios', {
+			templateUrl: 'usuarios.html',
+			controller: 'UsuariosCtrl',
+		})
 
 		.otherwise({ redirectTo: '/' });
 });
@@ -106,8 +110,8 @@ inicio_mod.controller('meu_controller', function ($scope) {
 		},
 		{
 			"nome": "Usuários",
-			"icone": "clip-stats",
-			"link": "usuarios.html",
+			"icone": "fa fa-user",
+			"link": "#!/usuarios",
 		},
 	];
 
