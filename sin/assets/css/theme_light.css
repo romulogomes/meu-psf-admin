@@ -97,7 +97,7 @@ ul.main-navigation-menu > li.open > a, ul.main-navigation-menu > li > a:hover, u
 .navigation-toggler, .go-top {
 	background-color: #E4E5E6 !important;
 	color:#b1b1b1;
-	margin: 9px 17px 0px 165px;
+	margin: 30px 17px 0px 165px;
 }
 .navigation-toggler:hover i:first-child, .go-top:hover {
 	color: #555555;
