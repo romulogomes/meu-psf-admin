@@ -1,13 +1,13 @@
-function meucontroller($scope, $http){
-	
-	$scope.envia = function(){
+function meucontroller($scope, $http) {
 
-		sessionStorage.setItem('nome' , 'Romulo Gomes');
-		location.href="../sin/boletim.html";
-    }
+	$scope.envia = function () {
+
+		sessionStorage.setItem('nome', 'Romulo Gomes');
+		location.href = "../sin/consultas.html";
+	}
 }
 
-	
 
 
- 
+
+
