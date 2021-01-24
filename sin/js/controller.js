@@ -74,11 +74,10 @@ inicio_mod.config(function ($routeProvider) {
 			templateUrl: 'medicamentos.html',
 			controller: 'MedicamentosCtrl',
 		})
-
-		// .when('/contact', {
-		// 		templateUrl : 'app/views/contact.html',
-		// 		controller  : 'ContactCtrl',
-		// })
+		.when('/calendario', {
+			templateUrl: 'calendario.html',
+			controller: 'CalendarioCtrl',
+		})
 
 		.otherwise({ redirectTo: '/' });
 });
@@ -93,7 +92,7 @@ inicio_mod.controller('meu_controller', function ($scope) {
 		{
 			"nome": "Consultas",
 			"icone": "fa fa-user-md",
-			"link": "#/consultas",
+			"link": "#!/consultas",
 		},
 		{
 			"nome": "Medicamentos",
@@ -102,8 +101,8 @@ inicio_mod.controller('meu_controller', function ($scope) {
 		},
 		{
 			"nome": "Calendário",
-			"icone": "fa fa-book",
-			"link": "grade.html",
+			"icone": "fa fa-calendar",
+			"link": "#!/calendario",
 		},
 		{
 			"nome": "Usuários",
