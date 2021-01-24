@@ -113,6 +113,11 @@ inicio_mod.controller('meu_controller', function ($scope) {
 			"icone": "fa fa-user",
 			"link": "#!/usuarios",
 		},
+		{
+			"nome": "Relatórios",
+			"icone": "fa fa-folder-open",
+			"link": "#!/usuarios",
+		},
 	];
 
 	$scope.subtitulo = "a";

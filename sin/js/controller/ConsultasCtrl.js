@@ -1,6 +1,6 @@
 
 inicio_mod.controller('ConsultasCtrl', function ($scope) {
-  $scope.subtitulo = "GLoria a Deus";
+  $scope.subtitulo = "Gerencie todas as consultas";
 
   $scope.init = function () {
     var dados = [{
@@ -19,13 +19,13 @@ inicio_mod.controller('ConsultasCtrl', function ($scope) {
       status: "agendada",
       urgencia: 10,
     }]
-    monta_tabela_notas(dados);
+    monta_tabela_consultas(dados);
   }
 
   $scope.init();
 });
 
-function monta_tabela_notas(dados) {
+function monta_tabela_consultas(dados) {
   var t = $('#tabela').DataTable({
     "columns": [
       { "width": "40%" },

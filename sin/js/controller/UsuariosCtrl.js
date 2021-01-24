@@ -1,6 +1,6 @@
 
 inicio_mod.controller('UsuariosCtrl', function ($scope) {
-  $scope.subtitulo = "GLoria a Deus";
+  $scope.subtitulo = "Gerencie os Usuários";
 
   $scope.init = function () {
     var t = $('#tabela').DataTable({

@@ -5,31 +5,22 @@
 				<ol class="breadcrumb"></ol>
 				<div class="page-header" style="margin-bottom: 2px; padding-bottom: 2px; margin-top:2px">
 					<onde-estou pagina='Medicamentos' icone="fa fa-medkit"></onde-estou>
-					<titulo-sistema subtitulo="{{'NE'}}"></titulo-sistema>
+					<titulo-sistema subtitulo="subtitulo"></titulo-sistema>
 				</div>
 			</div>
 		</div>
-		<h5 style="margin: 0px; line-height: 20px;">Gerencie os medicamentos</h5>
-		{{titulo}}
 		<div class="tabela">
 			<table id="tabela" class="tabela display" cellspacing="0">
 				<thead>
 					<tr>
-						<th>
-							<center>Nome</center>
-						</th>
-						<th>
-							<center>Data</center>
-						</th>
-						<th>
-							<center>Status da Consulta</center>
-						</th>
-						<th>
-							<center>Urgência</center>
-						</th>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Princípio Ativo</th>
+						<th>Dosagem</th>
+						<th>Quantidade Disponível</th>
 					</tr>
 				</thead>
-				<tbody class='tabela_notas'>
+				<tbody class='tabela'>
 				</tbody>
 			</table>
 			<!--div id="loading">
@@ -40,12 +31,63 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastrar"><i class="fa fa-plus"></i>
-					Cadastrar</button>
-				<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" data-toggle="modal"
-					data-target="#modal_editar" disabled><i class="fa fa-pencil"></i> Editar</button>
-				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir_gestor()" disabled><i
-						class="fa fa-trash-o"></i> Apagar</button>
+				<button class="btn btn-primary" ng-click="novo()"><i class="fa fa-plus"></i> Cadastrar</button>
+				<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" disabled><i class="fa fa-pencil"></i>
+					Editar</button>
+				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled>
+					<i class="fa fa-trash-o"></i> Apagar
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel"><i class="fa fa-medkit"></i> Medicamento</h4>
+			</div>
+			<div class="modal-body">
+				<div class="msg_erro rapida" id="cadastro_erro">
+					<div class="alert alert-warning">
+						<i class="fa fa-exclamation-triangle"></i>
+						<strong>Atenção!</strong> Preencha todos os campos!
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="form-field-1">Nome</label>
+					<div class="col-sm-9">
+						<input type="text" placeholder="Nome" ng-model="nome" id="nome" class="form-control">
+					</div>
+				</div><br><br>
+				<!-- FIXME Romulo - separar os campos -->
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="form-field-1">Princípio Ativo</label>
+					<div class="col-sm-9">
+						<input type="text" placeholder="Princípio Ativo" ng-model="principio_ativo" class="form-control">
+					</div>
+				</div><br><br>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="form-field-1">Dosagem</label>
+					<div class="col-sm-9">
+						<input type="text" placeholder="Dosagem" ng-model="dosagem" class="form-control">
+					</div>
+				</div><br><br>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="form-field-1">Quantidade disponível</label>
+					<div class="col-sm-9">
+						<input type="text" placeholder="Ex: 10 ou Alta/Média/Baixa" ng-model="qunatidade_disponivel"
+							class="form-control">
+					</div>
+				</div><br><br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" ng-click="salvar()"> Salvar <i
+						class="fa fa-arrow-circle-right"></i></button>
 			</div>
 		</div>
 	</div>
