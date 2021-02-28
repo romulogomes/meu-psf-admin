@@ -9,41 +9,47 @@
 				</div>
 			</div>
 		</div>
-		<div class="tabela">
-			<table id="tabela" class="tabela display" cellspacing="0">
-				<thead>
-					<tr>
-						<th>
-							<center>Nome</center>
-						</th>
-						<th>
-							<center>Data</center>
-						</th>
-						<th>
-							<center>Status da Consulta</center>
-						</th>
-						<th>
-							<center>Urgência</center>
-						</th>
-					</tr>
-				</thead>
-				<tbody class='tabela_notas'>
-				</tbody>
-			</table>
-			<!--div id="loading">
-							<div id="loading_centraliza">
-								<img src="img/ajax_loading.gif">
-							</div>
-						</div-->
+		<div class="col-md-8" style="height: 80%">
+			<div id='calendar'></div>
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastrar"><i class="fa fa-plus"></i>
-					Cadastrar</button>
-				<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" data-toggle="modal"
-					data-target="#modal_editar" disabled><i class="fa fa-pencil"></i> Editar</button>
-				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir_gestor()" disabled><i
-						class="fa fa-trash-o"></i> Apagar</button>
+		<div class="col-md-6" ng-show="false">
+
+			<div class="tabela">
+				<table id="tabela" class="tabela display" cellspacing="0">
+					<thead>
+						<tr>
+							<th>
+								<center>Nome</center>
+							</th>
+							<th>
+								<center>Data</center>
+							</th>
+							<th>
+								<center>Status da Consulta</center>
+							</th>
+							<th>
+								<center>Urgência</center>
+							</th>
+						</tr>
+					</thead>
+					<tbody class='tabela_notas'>
+					</tbody>
+				</table>
+				<!--div id="loading">
+								<div id="loading_centraliza">
+									<img src="img/ajax_loading.gif">
+								</div>
+							</div-->
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastrar"><i class="fa fa-plus"></i>
+						Cadastrar</button>
+					<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" data-toggle="modal"
+						data-target="#modal_editar" disabled><i class="fa fa-pencil"></i> Editar</button>
+					<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir_gestor()" disabled><i
+							class="fa fa-trash-o"></i> Apagar</button>
+				</div>
 			</div>
 		</div>
 	</div>

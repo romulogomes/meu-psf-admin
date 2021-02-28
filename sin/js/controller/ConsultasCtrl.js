@@ -6,17 +6,17 @@ inicio_mod.controller('ConsultasCtrl', function ($scope) {
     var dados = [{
       nome: "Maria Joaquina 1 ",
       data: "01/01/2020",
-      status: "agendada",
+      status: "Agendada",
       urgencia: 10,
     }, {
-      nome: "Maria Joaquina 2",
+      nome: "João das Couves",
       data: "10/01/2020",
-      status: "agendada",
+      status: "Confirmada",
       urgencia: 10,
     }, {
-      nome: "Maria Joaquina 3",
+      nome: "José",
       data: "02/02/2020",
-      status: "agendada",
+      status: "Encerrada",
       urgencia: 10,
     }]
     monta_tabela_consultas(dados);
