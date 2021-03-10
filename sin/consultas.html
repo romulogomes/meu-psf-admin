@@ -18,7 +18,6 @@
 						<th>Nome</th>
 						<th>Data</th>
 						<th>Status da Consulta</th>
-						<th>Urgência</th>
 						<th>Motivo</th>
 					</tr>
 				</thead>
@@ -101,13 +100,6 @@
 					<label class="col-sm-2 control-label" for="motivo">Motivo</label>
 					<div class="col-sm-9" style="margin-top: 1% !important;">
 						<input type="text" name="motivo" placeholder="Motivo" maxlength="50" ng-model="consulta.motivo" class="form-control" autocomplete="off">
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="urgencia">Urgência</label>
-					<div class="col-sm-9" style="margin-top: 1% !important;">
-						<input type="text" mask='9' name="urgencia" placeholder="Urgência" ng-model="consulta.urgencia" class="form-control" restrict="reject" autocomplete="off">
 					</div>
 				</div>
 				<br>

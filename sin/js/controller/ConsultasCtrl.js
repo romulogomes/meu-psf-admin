@@ -21,7 +21,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     $scope.consulta.usuario = undefined;
     $scope.consulta.data = undefined;
     $scope.consulta.status = undefined;
-    $scope.consulta.urgencia = undefined;
     $scope.consulta.motivo = undefined;
     
     $("#modal").modal();
@@ -44,8 +43,7 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     $scope.consulta.usuario_id = dados[1];
     $scope.consulta.data = moment(new Date(dados[3]));
     $scope.consulta.status = dados[4].toLowerCase();
-    $scope.consulta.urgencia = dados[5];
-    $scope.consulta.motivo = dados[6];
+    $scope.consulta.motivo = dados[5];
   };
 
   $scope.cadastrar = function () {
@@ -210,7 +208,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
         { width: "40%" },
         { width: "15%" },
         { width: "15%" },
-        { width: "13%" },
         { width: "15%" },
       ],
       info: false,
@@ -243,7 +240,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
       dados.usuario ? dados.usuario.nome : "-",
       dados.data ? formatarData(dados.data) : "-",
       dados.status ? formatarStatus(dados.status) : "-",
-      dados.urgencia ? dados.urgencia : "-",
       dados.motivo ? dados.motivo : "-",
     ];
   }
