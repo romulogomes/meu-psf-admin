@@ -85,10 +85,6 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
   };
 
   function cadastrar() {
-    salvarEvento();
-  }
-
-  function salvarEvento() {
     $scope.evento.psf_id = $scope.psf_id;
     $http.post(__env.apiUrl + "/calendarios", $scope.evento).then(
       function (response) {
@@ -116,26 +112,6 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
   }
 
   function editar() {
-    swal({
-      title: "Atualizar evento?",
-      text: "Você tem certeza que deseja atualizar o evento?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        if (isConfirm) {
-          editarEvento();
-        }
-      },
-      function () {}
-    );
-  };
-
-  function editarEvento() {
     $scope.evento.psf_id = $scope.psf_id;
     $http.put(__env.apiUrl + "/calendarios/" + $scope.evento.id, $scope.evento).then(
       function (response) {
@@ -161,7 +137,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
         );
       }
     );
-  }
+  };
 
   $scope.excluir = function() {
     var idEventoSelecionado = $scope.evento.id;

@@ -4,7 +4,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
   this.listarMedicamentos = listarMedicamentos;
   this.montarTabelaMedicamentos = montarTabelaMedicamentos;
   this.dadosDaRow = dadosDaRow;
-  this.salvarMedicamento = salvarMedicamento;
   this.excluirMedicamento = excluirMedicamento;
 
   $scope.init = function () {
@@ -43,27 +42,53 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
   };
 
   $scope.cadastrar = function () {
-    swal({
-      title: "Cadastrar medicamento?",
-      text: "Você tem certeza que deseja cadastrar o medicamento?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        if (isConfirm) {
-          salvarMedicamento();
-        }
+    $scope.medicamento.psf_id = $scope.psf_id;
+    $http.post(__env.apiUrl + "/medicamentos/", $scope.medicamento).then(
+      function (response) {
+        $("#tabela").DataTable().row.add(dadosDaRow(response.data)).draw();
+        $("#modal").modal("toggle");
+        showConfirmation("Medicamento cadastrado com sucesso");
       },
-      function () {}
+      function (error) {
+        swal({
+          title: "Erro ao cadastrar",
+          text: "Houve um erro na tentativa de cadastrar o medicamento",
+          type: "error",
+          timer: 2000,
+        }).then(
+          function () {},
+          function () {}
+        );
+      }
     );
   };
 
   $scope.editar = function () {
-    editarMedicamento();
+    $scope.medicamento.psf_id = $scope.psf_id;
+    $http
+      .put(
+        __env.apiUrl + "/medicamentos/" + $scope.medicamento.id,
+        $scope.medicamento
+      )
+      .then(
+        function (response) {
+          $scope.selectedRow.data(dadosDaRow(response.data)).draw();
+          $("#modal").modal("toggle");
+          showConfirmation("Medicamento atualizado com sucesso");
+        },
+        function (error) {
+          swal({
+            title: "Erro ao atualizar",
+            text:
+              "Houve um erro na tentativa de atualizar o medicamento selecionado",
+            type: "error",
+            timer: 2000,
+          }).then(
+            function () {},
+            function () {}
+          );
+        }
+      );
   };
 
   $scope.excluir = function () {
@@ -144,56 +169,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
       dados.dosagem ? dados.dosagem : "-",
       dados.disponibilidade ? dados.disponibilidade : "-",
     ];
-  }
-
-  function salvarMedicamento() {
-    $scope.medicamento.psf_id = $scope.psf_id;
-    $http.post(__env.apiUrl + "/medicamentos/", $scope.medicamento).then(
-      function (response) {
-        $("#tabela").DataTable().row.add(dadosDaRow(response.data)).draw();
-        $("#modal").modal("toggle");
-        showConfirmation("Medicamento cadastrado com sucesso");
-      },
-      function (error) {
-        swal({
-          title: "Erro ao cadastrar",
-          text: "Houve um erro na tentativa de cadastrar o medicamento",
-          type: "error",
-          timer: 2000,
-        }).then(
-          function () {},
-          function () {}
-        );
-      }
-    );
-  }
-
-  function editarMedicamento() {
-    $scope.medicamento.psf_id = $scope.psf_id;
-    $http
-      .put(
-        __env.apiUrl + "/medicamentos/" + $scope.medicamento.id,
-        $scope.medicamento
-      )
-      .then(
-        function (response) {
-          $scope.selectedRow.data(dadosDaRow(response.data)).draw();
-          $("#modal").modal("toggle");
-          showConfirmation("Medicamento atualizado com sucesso");
-        },
-        function (error) {
-          swal({
-            title: "Erro ao atualizar",
-            text:
-              "Houve um erro na tentativa de atualizar o medicamento selecionado",
-            type: "error",
-            timer: 2000,
-          }).then(
-            function () {},
-            function () {}
-          );
-        }
-      );
   }
 
   function excluirMedicamento(idMedicamentoSelecionado) {

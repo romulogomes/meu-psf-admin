@@ -20,7 +20,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     $scope.consulta.usuario = undefined;
     $scope.consulta.data = undefined;
     $scope.consulta.status = undefined;
-    $scope.consulta.motivo = undefined;
     
     $("#modal").modal();
   };
@@ -42,90 +41,57 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     $scope.consulta.usuario_id = dados[1];
     $scope.consulta.data = moment(new Date(dados[3]));
     $scope.consulta.status = dados[4].toLowerCase();
-    $scope.consulta.motivo = dados[5];
   };
 
   $scope.cadastrar = function () {
-    swal({
-      title: "Cadastrar consulta?",
-      text: "Você tem certeza que deseja cadastrar a consulta?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        $scope.consulta.psf_id = $scope.psf_id;
-        $scope.consulta.usuario_id = $scope.consulta.usuario;
-        if (isConfirm) {
-          $http.post(__env.apiUrl + "/consultas/", $scope.consulta).then(
-            function (response) {
-              $("#tabela")
-                .DataTable()
-                .row.add(dadosDaRow(response.data))
-                .draw();
-              $("#modal").modal("toggle");
-              showConfirmation("Consulta cadastrada com sucesso");
-            },
-            function (error) {
-              swal({
-                title: "Erro ao cadastrar",
-                text: "Houve um erro na tentativa de cadastrar a consulta",
-                type: "error",
-                timer: 2000,
-              }).then(
-                function () {},
-                function () {}
-              );
-            }
-          );
-        }
+    $scope.consulta.psf_id = $scope.psf_id;
+    $scope.consulta.usuario_id = $scope.consulta.usuario;
+    $http.post(__env.apiUrl + "/consultas/", $scope.consulta).then(
+      function (response) {
+        $("#tabela")
+          .DataTable()
+          .row.add(dadosDaRow(response.data))
+          .draw();
+        $("#modal").modal("toggle");
+        showConfirmation("Consulta cadastrada com sucesso");
       },
-      function () {}
+      function (error) {
+        swal({
+          title: "Erro ao cadastrar",
+          text: "Houve um erro na tentativa de cadastrar a consulta",
+          type: "error",
+          timer: 2000,
+        }).then(
+          function () {},
+          function () {}
+        );
+      }
     );
   };
 
   $scope.editar = function () {
-    swal({
-      title: "Atualizar consulta?",
-      text: "Você tem certeza que deseja atualizar a consulta?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        $scope.consulta.psf_id = $scope.psf_id;
-        if (isConfirm) {
-          $http
-            .put(__env.apiUrl + "/consultas/" + $scope.consulta.id, $scope.consulta)
-            .then(
-              function (response) {
-                $scope.selectedRow.data(dadosDaRow(response.data)).draw();
-                $("#modal").modal("toggle");
-                showConfirmation("Consulta atualizada com sucesso");
-              },
-              function (error) {
-                swal({
-                  title: "Erro ao atualizar",
-                  text:
-                    "Houve um erro na tentativa de atualizar a consulta selecionada",
-                  type: "error",
-                  timer: 2000,
-                }).then(
-                  function () {},
-                  function () {}
-                );
-              }
-            );
+    $scope.consulta.psf_id = $scope.psf_id;
+    $http
+      .put(__env.apiUrl + "/consultas/" + $scope.consulta.id, $scope.consulta)
+      .then(
+        function (response) {
+          $scope.selectedRow.data(dadosDaRow(response.data)).draw();
+          $("#modal").modal("toggle");
+          showConfirmation("Consulta atualizada com sucesso");
+        },
+        function (error) {
+          swal({
+            title: "Erro ao atualizar",
+            text:
+              "Houve um erro na tentativa de atualizar a consulta selecionada",
+            type: "error",
+            timer: 2000,
+          }).then(
+            function () {},
+            function () {}
+          );
         }
-      },
-      function () {}
-    );
+      );
   };
 
   $scope.excluir = function () {
@@ -207,7 +173,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
         { width: "40%" },
         { width: "15%" },
         { width: "15%" },
-        { width: "15%" },
       ],
       info: false,
       paging: true,
@@ -239,7 +204,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
       dados.usuario ? dados.usuario.nome : "-",
       dados.data ? formatarData(dados.data) : "-",
       dados.status ? formatarStatus(dados.status) : "-",
-      dados.motivo ? dados.motivo : "-",
     ];
   }
 
