@@ -23,20 +23,12 @@
 				<tbody class='tabela'>
 				</tbody>
 			</table>
-			<!--div id="loading">
-							<div id="loading_centraliza">
-								<img src="img/ajax_loading.gif">
-							</div>
-						</div-->
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button class="btn btn-primary" ng-click="novo()"><i class="fa fa-plus"></i> Cadastrar</button>
-				<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" disabled><i class="fa fa-pencil"></i>
-					Editar</button>
-				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled>
-					<i class="fa fa-trash-o"></i> Apagar
-				</button>
+				<button class="btn btn-primary" ng-click="abrirModalCadastrar()"><i class="fa fa-plus"></i> Cadastrar</button>
+				<button class="btn btn-warning" id="btn_editar" ng-click="abrirModalEditar()" disabled><i class="fa fa-pencil"></i> Editar</button>
+				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled><i class="fa fa-trash-o"></i> Apagar</button>
 			</div>
 		</div>
 	</div>
@@ -60,34 +52,32 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="form-field-1">Nome</label>
 					<div class="col-sm-9">
-						<input type="text" placeholder="Nome" ng-model="nome" id="nome" class="form-control">
+						<input type="text" placeholder="Nome" ng-model="medicamento.nome" id="nome" class="form-control">
 					</div>
 				</div><br><br>
-				<!-- FIXME Romulo - separar os campos -->
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="form-field-1">Princípio Ativo</label>
 					<div class="col-sm-9">
-						<input type="text" placeholder="Princípio Ativo" ng-model="principio_ativo" class="form-control">
+						<input type="text" placeholder="Princípio Ativo" ng-model="medicamento.principio_ativo" class="form-control">
 					</div>
 				</div><br><br>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="form-field-1">Dosagem</label>
 					<div class="col-sm-9">
-						<input type="text" placeholder="Dosagem" ng-model="dosagem" class="form-control">
+						<input type="text" placeholder="Dosagem" ng-model="medicamento.dosagem" class="form-control">
 					</div>
 				</div><br><br>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="form-field-1">Quantidade disponível</label>
 					<div class="col-sm-9">
-						<input type="text" placeholder="Ex: 10 ou Alta/Média/Baixa" ng-model="qunatidade_disponivel"
+						<input type="text" placeholder="Ex: 10 ou Alta/Média/Baixa" ng-model="medicamento.disponibilidade"
 							class="form-control">
 					</div>
 				</div><br><br>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary" ng-click="salvar()"> Salvar <i
-						class="fa fa-arrow-circle-right"></i></button>
+				<button type="button" class="btn btn-primary" ng-click="salvar()"> Salvar <i class="fa fa-arrow-circle-right"></i></button>
 			</div>
 		</div>
 	</div>
