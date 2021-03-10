@@ -10,7 +10,7 @@ login_mod.constant('__env', env);
 login_mod.controller('loginController', function ($scope, $http) {
 	$scope.login = function () {
 		$scope.loading = true;
-		$http.post(__env.apiUrl + "/login", {
+		$http.post(__env.apiUrl + "/administradores/login", {
             cpf_ou_email: $scope.usuario,
             senha: $scope.senha
           })
