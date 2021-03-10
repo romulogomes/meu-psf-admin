@@ -36,10 +36,11 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     var dados = $scope.selectedRow.data();
     $("#modal").modal();
 
+    var data = dados[3].split("/");
     $scope.consulta.id = dados[0];
     $scope.consulta.usuario = dados[1] ? {id: dados[1]} : {};
     $scope.consulta.usuario_id = dados[1];
-    $scope.consulta.data = moment(new Date(dados[3]));
+    $scope.consulta.data = moment(new Date(data[2], data[1]-1, data[0]));
     $scope.consulta.status = dados[4].toLowerCase();
   };
 
