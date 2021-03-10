@@ -9,9 +9,9 @@ function HttpInterceptor ($location, $q) {
     request: function(config) {
       config.headers = config.headers || {};
 
-      config.headers['token'] = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoiTVE9PVxuIn0.8W53I5jKiwv10JJpay1et7NJiLXcPz7KLkV4hxclhQ4'
-    //   if (AuthService.getToken()) {
-    //   }
+      if (sessionStorage.tokenMeuPsf) {
+        config.headers['token'] = JSON.parse(sessionStorage.tokenMeuPsf).token;
+      }
 
       return config;
     },

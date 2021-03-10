@@ -1,16 +1,16 @@
-function meucontroller($scope, $http) {
-	$scope.envia = function () {
+var env = {};
 
-		sessionStorage.setItem('usuarioLogadoMeuPsf', {
-			cpf_ou_email: cpf_ou_email,
-			token: response.token
-		});
-		location.href = "../sin/#!/consultas";
-	}
+if(window){  
+  Object.assign(env, window.__env);
+}
 
+var login_mod = angular.module('login_app', []);
+login_mod.constant('__env', env);
+
+login_mod.controller('loginController', function ($scope, $http) {
 	$scope.login = function () {
 		$scope.loading = true;
-		$http.post("https://meu-psf-api.herokuapp.com/login", {
+		$http.post(__env.apiUrl + "/login", {
             cpf_ou_email: $scope.usuario,
             senha: $scope.senha
           })
@@ -25,14 +25,9 @@ function meucontroller($scope, $http) {
 					text: "Usuário e/ou senha incorreto(s)",
 					type: "error",
 					timer: 2000,
-				  });;
+				  });
 				$scope.loading = false;
             }
           });
 	};
-}
-
-
-
-
-
+});
