@@ -5,7 +5,6 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
   this.listarEventos = this.listarEventos;
 
   $scope.init = function () {
-    $scope.psf_id = 1;
     $scope.evento = {};
     $("#modal").on("hide.bs.modal", function (e) {
       $scope.evento = {};
@@ -54,6 +53,9 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
       initialView: 'dayGridMonth',
       height: '100%',
       locale: 'pt-br',
+      buttonText: {
+        today: 'hoje',
+      },
       events: $scope.eventos,
       eventClick: function (info) {
         abrirModalEditar(info.event._def);

@@ -94,10 +94,6 @@ inicio_mod.config(function ($routeProvider) {
 
 
 inicio_mod.controller('meu_controller', function ($scope) {
-	/*
-		if(!sessionStorage.getItem('nome'))
-			location.href= "../index.html"; */
-
 	$scope.menus = [
 		{
 			"nome": "Consultas",
@@ -129,9 +125,21 @@ inicio_mod.controller('meu_controller', function ($scope) {
 	$scope.subtitulo = "a";
 
 	$scope.usuario = function () {
-		return sessionStorage.getItem('nome');
+		if (sessionStorage.tokenMeuPsf) {
+			return JSON.parse(sessionStorage.tokenMeuPsf).nome;
+		}
 	}
 
+	$scope.psf_id = Number(JSON.parse(sessionStorage.tokenMeuPsf).psf_id);
+
+});
+
+inicio_mod.run(function ($http) {
+	if (sessionStorage.tokenMeuPsf) {
+		$http.defaults.headers.common.Authorization = JSON.parse(sessionStorage.tokenMeuPsf).token;
+	} else {
+		location.href = "../login_sin/index.html";
+	}
 });
 
 inicio_mod.constant('__env', env);

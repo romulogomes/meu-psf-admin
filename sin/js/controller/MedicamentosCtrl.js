@@ -9,7 +9,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
 
   $scope.init = function () {
     $scope.medicamento = {};
-    $scope.psf_id = 1;
     listarMedicamentos();
   };
 

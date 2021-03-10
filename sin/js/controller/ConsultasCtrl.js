@@ -9,7 +9,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
   $scope.init = function () {
     $scope.consulta = {};
     $scope.consulta.usuario = {};
-    $scope.psf_id = 1;
     carregarUsuariosDoPsf();
     listarConsultas();
   }
@@ -58,7 +57,7 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
       confirmButtonText: "Sim!",
     }).then(
       function (isConfirm) {
-        $scope.consulta.psf_id = 1;
+        $scope.consulta.psf_id = $scope.psf_id;
         $scope.consulta.usuario_id = $scope.consulta.usuario;
         if (isConfirm) {
           $http.post(__env.apiUrl + "/consultas/", $scope.consulta).then(
@@ -100,7 +99,7 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
       confirmButtonText: "Sim!",
     }).then(
       function (isConfirm) {
-        $scope.consulta.psf_id = 1;
+        $scope.consulta.psf_id = $scope.psf_id;
         if (isConfirm) {
           $http
             .put(__env.apiUrl + "/consultas/" + $scope.consulta.id, $scope.consulta)
