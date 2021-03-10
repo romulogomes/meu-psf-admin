@@ -85,23 +85,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
   };
 
   function cadastrar() {
-    swal({
-      title: "Cadastrar evento?",
-      text: "Você tem certeza que deseja cadastrar o evento?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        if (isConfirm) {
-          salvarEvento();
-        }
-      },
-      function () {}
-    );
+    salvarEvento();
   }
 
   function salvarEvento() {
@@ -111,8 +95,11 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
         $scope.eventos.push(response.data);
         renderizarCalendario($scope.eventos);
         $scope.evento = {};
-        $("#modal").modal("toggle");
         showConfirmation("Evento cadastrado com sucesso");
+        setTimeout(function(){
+         $("#modal").modal("toggle");
+        }, 500);
+         
       },
       function (error) {
         swal({

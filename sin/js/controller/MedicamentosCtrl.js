@@ -63,23 +63,7 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
   };
 
   $scope.editar = function () {
-    swal({
-      title: "Atualizar medicamento?",
-      text: "Você tem certeza que deseja atualizar o medicamento?",
-      type: "warning",
-      cancelButtonText: "Cancelar",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim!",
-    }).then(
-      function (isConfirm) {
-        if (isConfirm) {
-          editarMedicamento();
-        }
-      },
-      function () {}
-    );
+    editarMedicamento();
   };
 
   $scope.excluir = function () {
