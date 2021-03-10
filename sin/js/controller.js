@@ -1,4 +1,10 @@
-var inicio_mod = angular.module('sig_app', ['ngRoute'])
+var env = {};
+
+if(window){  
+  Object.assign(env, window.__env);
+}
+
+var inicio_mod = angular.module('sig_app', ['ngRoute', 'ngMask', 'moment-picker'])
 
 inicio_mod.directive('headerLeft', function () {
 	return {
@@ -127,3 +133,5 @@ inicio_mod.controller('meu_controller', function ($scope) {
 	}
 
 });
+
+inicio_mod.constant('__env', env);
