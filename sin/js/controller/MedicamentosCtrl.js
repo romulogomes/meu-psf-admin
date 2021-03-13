@@ -27,10 +27,10 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
     $("#modal").modal();
 
     $scope.medicamento.id = dados[0];
-    $scope.medicamento.nome = dados[1];
-    $scope.medicamento.principio_ativo = dados[2];
-    $scope.medicamento.dosagem = dados[3];
-    $scope.medicamento.disponibilidade = dados[4];
+    $scope.medicamento.nome = dados[1] && dados[1] != "-" ? dados[1] : undefined;
+    $scope.medicamento.principio_ativo = dados[2] && dados[2] != "-" ? dados[2] : undefined;
+    $scope.medicamento.dosagem = dados[3] && dados[3] != "-" ? dados[3] : undefined;
+    $scope.medicamento.disponibilidade = dados[4] && dados[4] != "-" ? dados[4] : undefined;
   };
 
   $scope.salvar = function () {

@@ -49,57 +49,57 @@
 						<strong>Atenção!</strong> Preencha todos os campos!
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="nome">Nome</label>
-					<div class="col-sm-9" style="margin-top: 1%;">
-						<select 
-							name="nome" 
-							id="nome" 
-							class="form-control" 
-							ng-model="consulta.usuario" 
-							required 
-							style="padding-left: 1px; color: #1D1D1D;"
-							ng-options="usuario.id as usuario.nome for usuario in usuarios | orderBy:'nome' track by usuario.id">
-							<option value="">Escolha uma opção</option>
-						</select>
+				<form ng-submit="salvar()">
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="nome">Nome</label>
+						<div class="col-sm-9">
+							<select 
+								name="nome" 
+								id="nome" 
+								class="form-control" 
+								ng-model="consulta.usuario" 
+								required 
+								style="padding-left: 1px; color: #1D1D1D;"
+								ng-options="usuario.id as usuario.nome for usuario in usuarios | orderBy:'nome' track by usuario.id">
+								<option value="">Escolha uma opção</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<br>
-				<br>
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="data">Data</label>
-					<div class="col-sm-9" style="margin-top: 1%;">
-						<input type="text" 
-							name="data" 
-							placeholder="Data" 
-							ng-model="consulta.data" 
-							class="form-control"
-							required 
-							locale="pt-BR" 
-							format="DD/MM/YYYY"
-							moment-picker="form.data" 
-							autocomplete="off">
+					<br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="data">Data</label>
+						<div class="col-sm-9">
+							<input type="text" 
+								name="data" 
+								placeholder="Data" 
+								ng-model="consulta.data" 
+								class="form-control"
+								required 
+								locale="pt-BR" 
+								format="DD/MM/YYYY"
+								moment-picker="form.data" 
+								autocomplete="off">
+						</div>
 					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="status">Status</label>
-					<div class="col-sm-9" style="margin-top: 1%;">
-						<select name="status" id="status" class="form-control" ng-model="consulta.status" required style="padding-left: 1px; color: #1D1D1D;">
-							<option value="">Escolha uma opção</option>
-							<option value="agendada">Agendada</option>
-							<option value="confirmada">Confirmada</option>
-							<option value="indeferida">Indeferida</option>
-							<option value="encerrada">Encerrada</option>
-						</select>
+					<br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="status">Status</label>
+						<div class="col-sm-9">
+							<select name="status" id="status" class="form-control" ng-model="consulta.status" required style="padding-left: 1px; color: #1D1D1D;">
+								<option value="">Escolha uma opção</option>
+								<option value="agendada">Agendada</option>
+								<option value="confirmada">Confirmada</option>
+								<option value="indeferida">Indeferida</option>
+								<option value="encerrada">Encerrada</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<br>
-				<br>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary" ng-click="salvar()">Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
+					<br>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

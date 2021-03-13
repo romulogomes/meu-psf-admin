@@ -1,4 +1,8 @@
-.tabela_notas{
-  text-align: center;
-  font-weight: bold;
+.modal-margin-padding {
+  margin-bottom: 10px; 
+  padding-bottom: 10px;
+}
+
+.msg-erro {
+  color: #b33426;
 }

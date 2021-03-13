@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css" type="text/css" />
 	<link rel="shortcut icon" href="img/favicon.ico" />
 	<link rel="stylesheet" href="css/sweetalert2.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/sin.css" type="text/css" />
 	<link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
 
 </head>
@@ -63,6 +64,7 @@
 	</div>
 
 	<div ng-view></div>
+	<sarsha-spinner name="spinner"></sarsha-spinner>
 
 	<altera-senha></altera-senha>
 	<!-- end: PAGE -->
@@ -93,6 +95,8 @@
 	<script src="js/senha.js"></script>
 	<script src="js/sweetalert2.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.8.2/angular-animate.min.js"></script>
+	<script src="js/loading-spinner.min.js"></script> <!-- https://github.com/msarsha/angular-loading-spinner -->
 
 	<script>
 		$('#tabela_boletim').DataTable();

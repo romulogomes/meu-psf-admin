@@ -13,37 +13,120 @@
 			<table id="tabela" class="tabela display" cellspacing="0">
 				<thead>
 					<tr>
-						<th>
-							<center>Nome</center>
-						</th>
-						<th>
-							<center>Data</center>
-						</th>
-						<th>
-							<center>Status da Consulta</center>
-						</th>
-						<th>
-							<center>Urgência</center>
-						</th>
+						<th>ID</th>
+						<th>CPF</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Telefone</th>
+						<th>Bairro</th>
+						<th>Senha</th>
 					</tr>
 				</thead>
 				<tbody class='tabela_notas'>
 				</tbody>
 			</table>
-			<!--div id="loading">
-							<div id="loading_centraliza">
-								<img src="img/ajax_loading.gif">
-							</div>
-						</div-->
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastrar"><i class="fa fa-plus"></i>
-					Cadastrar</button>
-				<button class="btn btn-warning" id="btn_editar" ng-click="monta_edit()" data-toggle="modal"
-					data-target="#modal_editar" disabled><i class="fa fa-pencil"></i> Editar</button>
-				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir_gestor()" disabled><i
-						class="fa fa-trash-o"></i> Apagar</button>
+				<button class="btn btn-primary" ng-click="abrirModalCadastrar()"><i class="fa fa-plus"></i> Cadastrar</button>
+				<button class="btn btn-warning" id="btn_editar" ng-click="abrirModalEditar()" disabled><i class="fa fa-pencil"></i> Editar</button>
+				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled><i class="fa fa-trash-o"></i> Apagar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel"><i class="fa fa-medkit"></i> Usuário</h4>
+			</div>
+			<div class="modal-body">
+				<div class="msg_erro rapida" id="cadastro_erro">
+					<div class="alert alert-warning">
+						<i class="fa fa-exclamation-triangle"></i>
+						<strong>Atenção!</strong> Preencha pelo menos Nome, CPF e Senha!
+					</div>
+				</div>
+				<form ng-submit="salvar()">
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">Nome</label>
+						<div class="col-sm-9">
+							<input 
+								type="text" 
+								placeholder="Nome" 
+								maxlength="50" 
+								minlength="3"
+								ng-model="usuario.nome" 
+								id="nome" 
+								required
+								autocomplete="off"
+								class="form-control">
+							<small ng-if="(!usuario.nome || usuario.nome.length < 3) && mostrarErro" class="msg-erro">Campo obrigatório</small>
+						</div>
+					</div><br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">CPF</label>
+						<div class="col-sm-9">
+							<input 
+								type="text" 
+								placeholder="CPF (somente números)" 
+								ng-model="usuario.cpf" 
+								id="cpf"
+								required 
+								restrict="reject"
+								mask="999.999.999-99"
+								clean="true"
+								maxlength="14"
+								minlength="11"
+								class="form-control">
+						</div>
+					</div><br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">Senha</label>
+						<div class="col-sm-9">
+							<input 
+								type="text" 
+								placeholder="Senha" 
+								maxlength="50" 
+								minlength="3"
+								required
+								ng-model="usuario.senha" 
+								class="form-control">
+						</div>
+					</div><br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">Telefone</label>
+						<div class="col-sm-9">
+							<input 
+								type="text" 
+								placeholder="Telefone" 
+								ng-model="usuario.telefone"
+								mask="(99) 9?9999-9999"
+								restrict="reject"
+								class="form-control">
+						</div>
+					</div><br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">Bairro</label>
+						<div class="col-sm-9">
+							<input type="text" placeholder="Bairro" maxlength="50" ng-model="usuario.bairro" class="form-control">
+						</div>
+					</div><br>
+					<div class="form-group modal-margin-padding">
+						<label class="col-sm-2 control-label" for="form-field-1">E-mail</label>
+						<div class="col-sm-9">
+							<input type="email" placeholder="E-mail" ng-model="usuario.email" class="form-control">
+						</div>
+					</div><br>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary"> Salvar <i class="fa fa-arrow-circle-right"></i></button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

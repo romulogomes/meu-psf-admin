@@ -4,7 +4,7 @@ if(window){
   Object.assign(env, window.__env);
 }
 
-var inicio_mod = angular.module('sig_app', ['ngRoute', 'ngMask', 'moment-picker'])
+var inicio_mod = angular.module('sig_app', ['ngRoute', 'ngMask', 'moment-picker', 'sarsha.spinner'])
 
 inicio_mod.directive('headerLeft', function () {
 	return {

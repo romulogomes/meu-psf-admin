@@ -2,6 +2,7 @@ inicio_mod
   .factory('HttpInterceptor', HttpInterceptor)
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
+    $httpProvider.interceptors.push('spinnerHttpInterceptor');
   });
 
 function HttpInterceptor ($location, $q) {
