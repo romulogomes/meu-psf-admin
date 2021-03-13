@@ -6,18 +6,20 @@ if(window){
 
 var inicio_mod = angular.module('sig_app', ['ngRoute', 'ngMask', 'moment-picker', 'sarsha.spinner'])
 
+var versao = (new Date()).getTime();
+
 inicio_mod.directive('headerLeft', function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'templates/headerLeft.html',
+		templateUrl: 'templates/headerLeft.html?v='+versao,
 	}
 });
 inicio_mod.directive('headerMenu', function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'templates/headerMenu.html',
+		templateUrl: 'templates/headerMenu.html?v='+versao,
 		scope: {
 			usuario: '@'
 		}
@@ -27,7 +29,7 @@ inicio_mod.directive('footerSesa', function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'templates/footer.html',
+		templateUrl: 'templates/footer.html?v='+versao,
 	}
 });
 inicio_mod.directive('loading', function () {
@@ -48,7 +50,7 @@ inicio_mod.directive('ondeEstou', function () {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'templates/ondeEstou.html',
+		templateUrl: 'templates/ondeEstou.html?v='+versao,
 		scope: {
 			pagina: '@',
 			subpagina: '@',
@@ -60,7 +62,7 @@ inicio_mod.directive('ondeEstou', function () {
 inicio_mod.directive('alteraSenha', function () {
 	return {
 		restrict: 'E',
-		templateUrl: 'templates/alteraSenha.html',
+		templateUrl: 'templates/alteraSenha.html?v='+versao,
 		replace: true,
 	};
 });
@@ -69,23 +71,23 @@ inicio_mod.config(function ($routeProvider) {
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'consultas.html',
+			templateUrl: 'consultas.html?v='+versao,
 			controller: 'ConsultasCtrl',
 		})
 		.when('/consulta', {
-			templateUrl: 'consultas.html',
+			templateUrl: 'consultas.html?v='+versao,
 			controller: 'ConsultasCtrl',
 		})
 		.when('/medicamentos', {
-			templateUrl: 'medicamentos.html',
+			templateUrl: 'medicamentos.html?v='+versao,
 			controller: 'MedicamentosCtrl',
 		})
 		.when('/calendario', {
-			templateUrl: 'calendario.html',
+			templateUrl: 'calendario.html?v='+versao,
 			controller: 'CalendarioCtrl',
 		})
 		.when('/usuarios', {
-			templateUrl: 'usuarios.html',
+			templateUrl: 'usuarios.html?v='+versao,
 			controller: 'UsuariosCtrl',
 		})
 
