@@ -6,3 +6,9 @@
 .msg-erro {
   color: #b33426;
 }
+
+.fc .fc-button-primary{
+  background-color: #3788d8 !important;
+  border-color: #3788d8 !important;
+  color: #fff !important;
+}

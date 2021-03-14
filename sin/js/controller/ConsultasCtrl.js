@@ -1,4 +1,4 @@
-inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
+inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinnerService) {
   $scope.subtitulo = "Gerencie todas as consultas";
 
   this.listarConsultas = listarConsultas;
@@ -9,8 +9,10 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
   $scope.init = function () {
     $scope.consulta = {};
     $scope.consulta.usuario = {};
-    carregarUsuariosDoPsf();
-    listarConsultas();
+    setTimeout(() => {
+      spinnerService.showAll();
+      listarConsultas();
+    }, 50);
   }
 
   $scope.init();
@@ -140,6 +142,7 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
  function carregarUsuariosDoPsf() {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/usuarios`)
     .then(function(response){
+        spinnerService.closeAll();
         $scope.usuarios = response.data;
       }, function(error){
         console.log(error.data);
@@ -150,6 +153,7 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter) {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/consultas`).then(
       function (response) {
         montarTabelaConsultas(response.data);
+        carregarUsuariosDoPsf();
       },
       function (error) {
         swal({

@@ -1,9 +1,13 @@
-inicio_mod.controller('UsuariosCtrl', function ($scope, $http) {
+inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
   $scope.subtitulo = "Gerencie os Usuários";
 
   $scope.init = function () {
     $scope.usuario = {};
-    listarUsuarios();
+    $scope.permitirAlterarSenha = true;
+    setTimeout(() => {
+      spinnerService.showAll();
+      listarUsuarios();
+    }, 50);
   };
 
   $scope.init();
@@ -11,6 +15,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http) {
   function listarUsuarios() {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/usuarios`).then(
       function (response) {
+        spinnerService.closeAll();
         montarTabelaUsuarios(response.data);
       },
       function (error) {
@@ -72,6 +77,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http) {
   }
 
   $scope.abrirModalCadastrar = function () {
+    $scope.permitirAlterarSenha = true;
     $scope.usuario.id = undefined;
     $scope.usuario.cpf = undefined;
     $scope.usuario.nome = undefined;
@@ -84,6 +90,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http) {
 
   $scope.abrirModalEditar = function () {
     var dados = $scope.selectedRow.data();
+    $scope.permitirAlterarSenha = false;
     $("#modal").modal();
 
     $scope.usuario.id = dados[0];

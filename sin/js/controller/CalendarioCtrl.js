@@ -1,5 +1,5 @@
 
-inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
+inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService) {
   $scope.subtitulo = 'Gerencie o calendário do posto';
 
   this.listarEventos = this.listarEventos;
@@ -10,7 +10,9 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
       $scope.evento = {};
       $scope.$digest();
     });
-    listarEventos();
+    setTimeout(() => {
+      listarEventos();
+    }, 50);
   }
 
   $scope.init();
@@ -26,6 +28,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
   function listarEventos() {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/calendarios`).then(
       function (response) {
+        spinnerService.closeAll();
         renderizarCalendario(response.data);
       },
       function (error) {
@@ -62,7 +65,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
       },
       dateClick: function(info) {
         abrirModalCadastrar(info.dateStr);
-      }
+      },
     });
     $scope.calendar.render();
   }
@@ -72,6 +75,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http) {
     $scope.evento.descricao = undefined;
     $scope.evento.aceita_marcacao = undefined;
     $scope.evento.data = data;
+    $scope.$digest();
     $("#modal").modal();
   };
 

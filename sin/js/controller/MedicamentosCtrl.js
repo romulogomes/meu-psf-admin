@@ -1,4 +1,4 @@
-inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
+inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerService) {
   $scope.subtitulo = "Gerencie os medicamentos";
 
   this.listarMedicamentos = listarMedicamentos;
@@ -8,7 +8,10 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
 
   $scope.init = function () {
     $scope.medicamento = {};
-    listarMedicamentos();
+    setTimeout(() => {
+      spinnerService.showAll();
+      listarMedicamentos();
+    }, 50);
   };
 
   $scope.init();
@@ -115,6 +118,7 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http) {
   function listarMedicamentos() {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/medicamentos`).then(
       function (response) {
+      spinnerService.closeAll();
         montarTabelaMedicamentos(response.data);
       },
       function (error) {
