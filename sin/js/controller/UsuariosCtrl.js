@@ -85,6 +85,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
     $scope.usuario.telefone = undefined;
     $scope.usuario.bairro = undefined;
     $scope.usuario.senha = undefined;
+    $scope.esconder_senha = false;
     $("#modal").modal();
   };
 
@@ -100,6 +101,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
     $scope.usuario.telefone = dados[4] && dados[4] != "-" ? dados[4] : undefined;
     $scope.usuario.bairro = dados[5] && dados[5] != "-" ? dados[5] : undefined;
     $scope.usuario.senha = dados[6] && dados[6] != "-" ? dados[6] : undefined;
+    $scope.esconder_senha = true;
   };
 
   $scope.salvar = function () {
