@@ -21,7 +21,8 @@ inicio_mod.directive('headerMenu', function () {
 		replace: true,
 		templateUrl: 'templates/headerMenu.html?v='+versao,
 		scope: {
-			usuario: '@'
+			usuario: '@',
+      psf: '@'
 		}
 	}
 });
@@ -124,23 +125,27 @@ inicio_mod.controller('meu_controller', function ($scope) {
 		},
 	];
 
-	$scope.subtitulo = "a";
-
 	$scope.usuario = function () {
-		if (sessionStorage.tokenMeuPsf) {
-			return JSON.parse(sessionStorage.tokenMeuPsf).nome;
+		if (sessionStorage.usuario) {
+			return JSON.parse(sessionStorage.usuario).nome;
 		}
 	}
 
-	$scope.psf_id = Number(JSON.parse(sessionStorage.tokenMeuPsf).psf_id);
-
+	$scope.psf_id = Number(JSON.parse(sessionStorage.usuario).psf_id);
+  
+  $scope.psf = function () {
+		if (sessionStorage.usuario) {
+      return JSON.parse(sessionStorage.usuario).psf.nome;
+		}
+	}
+  
 });
 
 inicio_mod.run(function ($http) {
-	if (sessionStorage.tokenMeuPsf) {
-		$http.defaults.headers.common.Authorization = JSON.parse(sessionStorage.tokenMeuPsf).token;
+	if (sessionStorage.usuario) {
+		$http.defaults.headers.common.Authorization = JSON.parse(sessionStorage.usuario).token;
 	} else {
-		location.href = "../login_sin/index.html";
+		location.href = "../login_psf/index.html";
 	}
 });
 

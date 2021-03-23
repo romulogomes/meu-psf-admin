@@ -20,6 +20,7 @@
 						<th>Telefone</th>
 						<th>Bairro</th>
 						<th>Senha</th>
+            <th>Status</th>
 					</tr>
 				</thead>
 				<tbody class='tabela_notas'>
@@ -30,7 +31,8 @@
 			<div class="col-sm-12">
 				<button class="btn btn-primary" ng-click="abrirModalCadastrar()"><i class="fa fa-plus"></i> Cadastrar</button>
 				<button class="btn btn-warning" id="btn_editar" ng-click="abrirModalEditar()" disabled><i class="fa fa-pencil"></i> Editar</button>
-				<button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled><i class="fa fa-trash-o"></i> Apagar</button>
+				<button class="btn btn-bricky" id="btn_excluir" ng-click="desativarUsuario()" disabled><i class="fa fa-trash-o"></i> Desativar Usuário</button>
+        <!--button class="btn btn-bricky" id="btn_excluir" ng-click="excluir()" disabled><i class="fa fa-trash-o"></i> </button-->
 			</div>
 		</div>
 	</div>

@@ -10,8 +10,8 @@ function HttpInterceptor ($location, $q) {
     request: function(config) {
       config.headers = config.headers || {};
 
-      if (sessionStorage.tokenMeuPsf) {
-        config.headers['token'] = JSON.parse(sessionStorage.tokenMeuPsf).token;
+      if (sessionStorage.usuario) {
+        config.headers['token'] = JSON.parse(sessionStorage.usuario).token;
       }
 
       return config;

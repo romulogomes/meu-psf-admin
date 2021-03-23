@@ -33,12 +33,13 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
     var t = $("#tabela").DataTable({
       columns: [
         { width: "1%" },
-        { width: "29%" },
+        { width: "10%" },
         { width: "38%" },
         { width: "29%" },
         { width: "1%" },
         { width: "1%" },
         { width: "1%" },
+        { width: "15%" },
       ],
       info: false,
       paging: true,
@@ -73,6 +74,7 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
       dados.telefone ? dados.telefone : "-",
       dados.bairro ? dados.bairro : "-",
       dados.senha ? dados.senha : "-",
+      dados.status ? dados.status.toUpperCase() : "-",
     ];
   }
 
@@ -184,6 +186,48 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
                   title: "Erro ao excluir",
                   text:
                     "Houve um erro na tentativa de excluir o usuario selecionado",
+                  type: "error",
+                  timer: 2000,
+                });
+              }
+            );
+        }
+      },
+      function () {}
+    );
+  };
+
+  $scope.desativarUsuario = function () {
+    var idUsuarioSelecionado = $scope.selectedRow.data()[0];
+    swal({
+      title: "Desativar usuário?",
+      text: "Você tem certeza que deseja desativar o usuário?",
+      type: "warning",
+      cancelButtonText: "Cancelar",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, Desativar Usuário!",
+    }).then(
+      function (isConfirm) {
+        if (isConfirm) {
+          $http
+            .post(__env.apiUrl + "/desativar_usuario", { usuario_id: idUsuarioSelecionado })
+            .then(
+              function (response) {
+                $('#tabela').dataTable().fnClearTable();
+                $('#tabela').dataTable().fnDestroy();
+                listarUsuarios();
+                $("#btn_editar").prop("disabled", true);
+                $("#btn_excluir").prop("disabled", true);
+                showConfirmation("Usuário Desativado com sucesso");
+                instancia_click();
+              },
+              function (error) {
+                swal({
+                  title: "Erro ao excluir",
+                  text:
+                    "Houve um erro na tentativa de desativar o usuario selecionado",
                   type: "error",
                   timer: 2000,
                 });
