@@ -38,7 +38,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="main-navigation navbar-collapse collapse">
+	<div id="menu_lateral" class="main-navigation navbar-collapse collapse">
 		<div class="navigation-toggler navigation-small">
 			<i class="clip-chevron-left"></i>
 			<i class="clip-chevron-right"></i>
@@ -48,7 +48,7 @@
 			<!--Menu-->
 			<li ng-repeat="menu in menus">
 				<!-- Se nao tiver submenu -->
-				<a ng-href="{{menu.link}}" ng-hide="menu.submenu"><i class="{{menu.icone}}"></i>
+				<a ng-href="{{menu.link}}" onclick="ocultarMenu()" ng-hide="menu.submenu"><i class="{{menu.icone}}"></i>
 					<span class="title"> {{menu.nome}} </span><i class="icon-arrow" ng-show="menu.submenu"></i>
 				</a>
 				<!-- Se tiver submenu -->
