@@ -139,7 +139,50 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
     );
   };
 
- function carregarUsuariosDoPsf() {
+  $scope.confirmarConsulta = function () {
+    var idConsultaSelecionado = $scope.selectedRow.data()[0];
+    swal({
+      title: "Confirmar Consulta?",
+      text: "Você tem certeza que deseja confirmar a consulta?",
+      type: "warning",
+      cancelButtonText: "Cancelar",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, Confirmar!",
+    }).then(
+      function (isConfirm) {
+        if (isConfirm) {
+          $http
+            .post(__env.apiUrl + "/consultas/"+idConsultaSelecionado+"/confirmar/")
+            .then(
+              function (response) {
+                showConfirmation("Consulta confirmada com sucesso");
+                $('#tabela').dataTable().fnClearTable();
+                $('#tabela').dataTable().fnDestroy();
+                listarConsultas();
+                instancia_click();
+              },
+              function (error) {
+                swal({
+                  title: "Erro ao excluir",
+                  text:
+                    "Houve um erro na tentativa de confirmar a consulta selecionada",
+                  type: "error",
+                  timer: 2000,
+                }).then(
+                  function () {},
+                  function () {}
+                );
+              }
+            );
+        }
+      },
+      function () {}
+    );
+  };
+
+  function carregarUsuariosDoPsf() {
     $http.get(__env.apiUrl + `/psfs/${$scope.psf_id}/usuarios`)
     .then(function(response){
         spinnerService.closeAll();
