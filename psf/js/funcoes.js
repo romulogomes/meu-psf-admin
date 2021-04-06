@@ -8,7 +8,6 @@ function setSelecionado(selecionado) {
 }
 
 function instancia_selecao(tabela) {
-	var tabela = tabela;
 	var tbody = tabela.concat(' tbody');
 	var tr = tabela.concat(' tr.selected');
 
