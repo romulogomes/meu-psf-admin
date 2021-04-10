@@ -23,7 +23,6 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
           title: "Erro ao listar",
           text: "Houve um erro na tentativa de listar os usuarios",
           type: "error",
-          timer: 2000,
         });
       }
     );
@@ -116,19 +115,14 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
 
   cadastrar = function () {
     $scope.usuario.psf_id = $scope.psf_id;
-    $http.post(__env.apiUrl + "/usuarios/", $scope.usuario).then(
+    $http.post(__env.apiUrl + "/criar_usuario", $scope.usuario).then(
       function (response) {
         $("#tabela").DataTable().row.add(dadosDaRow(response.data)).draw();
         $("#modal").modal("toggle");
         showConfirmation("Usuário cadastrado com sucesso");
       },
       function (error) {
-        swal({
-          title: "Erro ao cadastrar",
-          text: "Houve um erro na tentativa de cadastrar o usuário",
-          type: "error",
-          timer: 2000,
-        });
+        swal({ title: "Erro ao cadastrar", text: "Houve um erro na tentativa de cadastrar o usuário", type: "error" });
       }
     );
   };
@@ -152,7 +146,6 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
             text:
               "Houve um erro na tentativa de atualizar o usuário selecionado",
             type: "error",
-            timer: 2000,
           });
         }
       );
@@ -187,7 +180,6 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
                   text:
                     "Houve um erro na tentativa de excluir o usuario selecionado",
                   type: "error",
-                  timer: 2000,
                 });
               }
             );
@@ -229,7 +221,6 @@ inicio_mod.controller('UsuariosCtrl', function ($scope, $http, spinnerService) {
                   text:
                     "Houve um erro na tentativa de desativar o usuario selecionado",
                   type: "error",
-                  timer: 2000,
                 });
               }
             );

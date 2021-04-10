@@ -63,7 +63,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
           title: "Erro ao cadastrar",
           text: "Houve um erro na tentativa de cadastrar a consulta",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -88,7 +87,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
             text:
               "Houve um erro na tentativa de atualizar a consulta selecionada",
             type: "error",
-            timer: 2000,
           }).then(
             function () {},
             function () {}
@@ -126,7 +124,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
                   text:
                     "Houve um erro na tentativa de excluir a consulta selecionada",
                   type: "error",
-                  timer: 2000,
                 }).then(
                   function () {},
                   function () {}
@@ -169,7 +166,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
                   text:
                     "Houve um erro na tentativa de confirmar a consulta selecionada",
                   type: "error",
-                  timer: 2000,
                 }).then(
                   function () {},
                   function () {}
@@ -204,7 +200,6 @@ inicio_mod.controller('ConsultasCtrl', function ($scope, $http, $filter, spinner
           text:
             "Houve um erro na tentativa de listar as consultas",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}

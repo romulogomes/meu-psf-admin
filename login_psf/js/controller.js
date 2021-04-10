@@ -9,7 +9,7 @@ login_mod.constant('__env', env);
 
 login_mod.controller('loginController', function ($scope, $http) {
   $scope.login = function () {
-    $scope.loading = true;
+    swal({ title: "Carregando", text: "Entrando...", type: "info" });
     $http.post(__env.apiUrl + "/administradores/login", {
       cpf_ou_email: $scope.usuario,
       senha: $scope.senha
@@ -26,7 +26,6 @@ login_mod.controller('loginController', function ($scope, $http) {
             type: "error",
             timer: 2000,
           });
-          $scope.loading = false;
         }
       });
   };

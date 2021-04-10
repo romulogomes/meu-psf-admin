@@ -36,7 +36,6 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
           title: "Erro ao listar",
           text: "Houve um erro na tentativa de listar os eventos do calendário",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -95,7 +94,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
         $scope.eventos.push(response.data);
         renderizarCalendario($scope.eventos);
         $scope.evento = {};
-        showConfirmation("Evento cadastrado com sucesso");
+        showConfirmation("Dia cadastrado com sucesso");
         setTimeout(function(){
          $("#modal").modal("toggle");
         }, 500);
@@ -104,9 +103,8 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
       function (error) {
         swal({
           title: "Erro ao cadastrar",
-          text: "Houve um erro na tentativa de cadastrar o evento",
+          text: "Houve um erro na tentativa de cadastrar o dia",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -127,14 +125,13 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
         setTimeout(() => {
           $("#modal").modal("toggle");
         }, 500);
-        showConfirmation("Evento atualizado com sucesso");
+        showConfirmation("Dia atualizado com sucesso");
       },
       function (error) {
         swal({
           title: "Erro ao cadastrar",
-          text: "Houve um erro na tentativa de cadastrar o evento",
+          text: "Houve um erro na tentativa de cadastrar o dia",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -147,7 +144,7 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
     var idEventoSelecionado = $scope.evento.id;
     swal({
       title: "Excluir evento?",
-      text: "Você tem certeza que deseja excluir o evento?",
+      text: "Você tem certeza que deseja excluir o dia?",
       type: "warning",
       cancelButtonText: "Cancelar",
       showCancelButton: true,
@@ -175,15 +172,14 @@ inicio_mod.controller('CalendarioCtrl', function ($scope, $http, spinnerService)
           setTimeout(() => {
             $("#modal").modal("toggle");
           }, 500);
-          showConfirmation("Evento excluído com sucesso");
+          showConfirmation("Dia excluído com sucesso");
         },
         function (error) {
           swal({
             title: "Erro ao excluir",
             text:
-              "Houve um erro na tentativa de excluir o evento selecionado",
+              "Houve um erro na tentativa de excluir o dia selecionado",
             type: "error",
-            timer: 2000,
           }).then(
             function () {},
             function () {}

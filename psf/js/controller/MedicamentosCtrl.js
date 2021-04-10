@@ -57,7 +57,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerServic
           title: "Erro ao cadastrar",
           text: "Houve um erro na tentativa de cadastrar o medicamento",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -67,7 +66,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerServic
   };
 
   $scope.editar = function () {
-    $scope.medicamento.psf_id = $scope.psf_id;
     $http
       .put(
         __env.apiUrl + "/medicamentos/" + $scope.medicamento.id,
@@ -85,7 +83,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerServic
             text:
               "Houve um erro na tentativa de atualizar o medicamento selecionado",
             type: "error",
-            timer: 2000,
           }).then(
             function () {},
             function () {}
@@ -126,7 +123,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerServic
           title: "Erro ao listar",
           text: "Houve um erro na tentativa de listar os medicamentos",
           type: "error",
-          timer: 2000,
         }).then(
           function () {},
           function () {}
@@ -191,7 +187,6 @@ inicio_mod.controller("MedicamentosCtrl", function ($scope, $http, spinnerServic
             text:
               "Houve um erro na tentativa de excluir o medicamento selecionado",
             type: "error",
-            timer: 2000,
           }).then(
             function () {},
             function () {}
