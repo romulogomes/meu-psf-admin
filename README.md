@@ -1,4 +1,4 @@
-# Meu PSF - Sistema de Administração
+# Minha UBS - Sistema de Administração
 
 ## Como Rodar o Projeto
 
@@ -10,7 +10,7 @@ Depois acesse: `http://127.0.0.1:8000/`
 
 ## Sobre o Projeto
 
-Sistema web para administração de unidades de saúde do Programa Saúde da Família (PSF). Desenvolvido em AngularJS 1.8 para gerenciar consultas médicas, medicamentos, agendamentos e usuários.
+Sistema web para administração de Unidades Básicas de Saúde (UBS). Desenvolvido em AngularJS 1.8 para gerenciar consultas médicas, medicamentos, agendamentos e usuários.
 
 ### Funcionalidades
 

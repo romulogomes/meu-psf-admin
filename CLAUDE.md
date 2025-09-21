@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a web-based health administration system called "Meu PSF" (My PSF - Programa Saúde da Família) built with AngularJS 1.8. The system manages medical consultations, medications, calendar scheduling, and user administration for primary health care units.
+This is a web-based health administration system called "Minha UBS" (My UBS - Unidade Básica de Saúde) built with AngularJS 1.8. The system manages medical consultations, medications, calendar scheduling, and user administration for primary health care units.
 
 ## Architecture
 
